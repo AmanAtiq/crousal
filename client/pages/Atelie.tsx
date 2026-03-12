@@ -665,8 +665,8 @@ export default function Atelie() {
               <h3 className="absolute left-[50px] top-[50px] font-playfair text-[32px] font-extrabold leading-[48px] tracking-[-0.02em] text-[#4D3522]">Solicitar orcamento</h3>
 
               <div className="absolute left-[50px] top-[130px] grid w-[536px] grid-cols-2 gap-4">
-                <input name="name" className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="Seu nome completo" title="Nome completo" required />
-                <input name="phone" className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="+244 900 000 000" title="Telefone/WhatsApp" required />
+                <input name="name" className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="Seu nome completo" title="Nome completo" required />
+                <input name="phone" className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="+244 900 000 000" title="Telefone/WhatsApp" required />
                 <select name="eventType" aria-label="Tipo de Evento" title="Tipo de Evento" className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" required>
                   <option value="" disabled selected hidden>Selecione o tipo de evento</option>
                   <option>Casamento</option>
@@ -679,9 +679,9 @@ export default function Atelie() {
                   <option>100-200</option>
                   <option>200-300</option>
                 </select>
-                <input name="date" type="date" className="col-span-1 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" title="Data do evento" placeholder="Data do evento" required />
-                <input name="time" type="time" className="col-span-1 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" title="Hora do evento" placeholder="Hora do evento" required />
-                <textarea name="details" className="col-span-2 min-h-[116px] rounded-2xl border-2 border-[#EEE] px-5 py-4 text-base" placeholder="Cores, estilo, sabores preferidos, inspiracoes..." title="Detalhes adicionais" />
+                <input name="date" type="date" className="col-span-1 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" title="Data do evento" placeholder="Data do evento" required />
+                <input name="time" type="time" className="col-span-1 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" title="Hora do evento" placeholder="Hora do evento" required />
+                <textarea name="details" className="col-span-2 min-h-[116px] rounded-2xl border-2 border-[#EEE] px-5 py-4 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="Cores, estilo, sabores preferidos, inspiracoes..." title="Detalhes adicionais" />
                 <button type="submit" className="col-span-2 inline-flex h-[53px] items-center justify-center gap-2 rounded-[60px] bg-[#967BB6] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#967BB6]">
                   <PaperPlaneIcon className="h-4 w-4" />
                   Solicitar orcamento

@@ -514,11 +514,11 @@ const details = (form.elements[6] as HTMLTextAreaElement | HTMLInputElement).val
 
               <div className="absolute left-[50px] top-[130px] grid w-[536px] grid-cols-2 gap-x-4 gap-y-3">
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Nome *
-                  <input name="name" className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" placeholder="Seu nome completo" required />
+                  <input name="name" className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522] placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="Seu nome completo" required />
                 </label>
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">WhatsApp *
-                  <input name="phone" className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" placeholder="+244 900 000 000" required />
+                  <input name="phone" className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522] placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="+244 900 000 000" required />
                 </label>
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Tipo de Evento
@@ -545,7 +545,7 @@ const details = (form.elements[6] as HTMLTextAreaElement | HTMLInputElement).val
     <input 
       name="date" 
       type="date" 
-      className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522] focus:border-[#FF8C00] outline-none [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:left-0 [&::-webkit-calendar-picker-indicator]:top-0 [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:opacity-0 cursor-pointer" 
+      className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522] placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal focus:border-[#FF8C00] outline-none [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:left-0 [&::-webkit-calendar-picker-indicator]:top-0 [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:opacity-0 cursor-pointer" 
       required 
     />
     <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
@@ -558,14 +558,14 @@ const details = (form.elements[6] as HTMLTextAreaElement | HTMLInputElement).val
     <input 
       name="time" 
       type="time" 
-      className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522] focus:border-[#FF8C00] outline-none [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:left-0 [&::-webkit-calendar-picker-indicator]:top-0 [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:opacity-0 cursor-pointer" 
+      className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522] placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal focus:border-[#FF8C00] outline-none [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:left-0 [&::-webkit-calendar-picker-indicator]:top-0 [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:opacity-0 cursor-pointer" 
       required 
     />
     <Clock3Icon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
   </div>
 </label>
                 <label className="col-span-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Mensagem adicional
-                  <textarea name="details" className="mt-2 h-24 w-full resize-none rounded-2xl border-2 border-[#EEE] px-[21px] py-[18px] text-base text-[#4D3522]" placeholder="Localizacao, preferencias..." />
+                  <textarea name="details" className="mt-2 h-24 w-full resize-none rounded-2xl border-2 border-[#EEE] px-[21px] py-[18px] text-base text-[#4D3522] placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="Localizacao, preferencias..." />
                 </label>
 
                 <button type="submit" className="col-span-2 mt-1 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-[60px] bg-[#FF8C00] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#FF8C00]">
