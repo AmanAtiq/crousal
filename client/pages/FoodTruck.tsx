@@ -482,14 +482,16 @@ export default function FoodTruck() {
               className="absolute left-[752px] top-24 h-[688px] w-[636px] rounded-[32px] border-2 border-[#FF8C00] bg-white shadow-[0_30px_60px_-12px_rgba(255,140,0,0.35)]"
               onSubmit={async (e) => {
                 e.preventDefault();
-                const form = e.currentTarget;
-                const name = form.elements[0].value;
-                const phone = form.elements[1].value;
-                const eventType = form.elements[2].value;
-                const guests = form.elements[3].value;
-                const date = form.elements[4].value;
-                const time = form.elements[5].value;
-                const details = form.elements[6].value;
+       const form = e.currentTarget as HTMLFormElement;
+
+// Access elements by casting them to HTMLInputElement or HTMLTextAreaElement
+const name = (form.elements[0] as HTMLInputElement).value;
+const phone = (form.elements[1] as HTMLInputElement).value;
+const eventType = (form.elements[2] as HTMLSelectElement | HTMLInputElement).value;
+const guests = (form.elements[3] as HTMLInputElement).value;
+const date = (form.elements[4] as HTMLInputElement).value;
+const time = (form.elements[5] as HTMLInputElement).value;
+const details = (form.elements[6] as HTMLTextAreaElement | HTMLInputElement).value;
                 try {
                   const res = await fetch("/api/foodtruck-quote", {
                     method: "POST",
@@ -537,22 +539,31 @@ export default function FoodTruck() {
                   </select>
                 </label>
 
-                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Data
-                  <div className="relative mt-2">
-                    <input name="date" type="date" className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" required />
-                    {/* Only one calendar icon, positioned right */}
-                    <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
-                  </div>
-                </label>
+              <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">
+  Data
+  <div className="relative mt-2">
+    <input 
+      name="date" 
+      type="date" 
+      className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522] focus:border-[#FF8C00] outline-none [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:left-0 [&::-webkit-calendar-picker-indicator]:top-0 [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:opacity-0 cursor-pointer" 
+      required 
+    />
+    <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
+  </div>
+</label>
 
-                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Horario
-                  <div className="relative mt-2">
-                    <input name="time" type="time" className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" required />
-                    {/* Only one time icon, positioned right */}
-                    <Clock3Icon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
-                  </div>
-                </label>
-
+<label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">
+  Horario
+  <div className="relative mt-2">
+    <input 
+      name="time" 
+      type="time" 
+      className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522] focus:border-[#FF8C00] outline-none [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:left-0 [&::-webkit-calendar-picker-indicator]:top-0 [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:opacity-0 cursor-pointer" 
+      required 
+    />
+    <Clock3Icon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
+  </div>
+</label>
                 <label className="col-span-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Mensagem adicional
                   <textarea name="details" className="mt-2 h-24 w-full resize-none rounded-2xl border-2 border-[#EEE] px-[21px] py-[18px] text-base text-[#4D3522]" placeholder="Localizacao, preferencias..." />
                 </label>
@@ -587,25 +598,25 @@ export default function FoodTruck() {
               <form className="rounded-[32px] border-2 border-[#ff8c00] bg-white p-8 shadow-[0_30px_60px_-12px_rgba(255,140,0,0.35)] md:p-12">
                 <h3 className="font-playfair text-5xl font-bold tracking-[-0.64px] text-[#4d3522]">Pedir orçamento</h3>
                 <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input name="name" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="Seu nome completo" required />
-                  <input name="phone" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="+244 900 000 000" required />
-                  <select name="eventType" aria-label="Tipo de evento" title="Tipo de evento" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
+                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="Seu nome completo" />
+                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="+244 900 000 000" />
+                  <select aria-label="Tipo de evento" title="Tipo de evento" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
                     <option>Casamento</option>
                     <option>Corporativo</option>
                     <option>Aniversario</option>
                     <option>Festival</option>
                   </select>
-                  <select name="guests" aria-label="Numero de convidados" title="Numero de convidados" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
+                  <select aria-label="Numero de convidados" title="Numero de convidados" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
                     <option>50-100</option>
                     <option>100-200</option>
                     <option>200-350</option>
                     <option>350-500</option>
                   </select>
-                  <input name="date" type="date" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" required />
-                  <input name="time" type="time" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" required />
+                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="dd/mm/yyyy" />
+                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="--:--" />
                 </div>
-                <textarea name="details" className="mt-4 min-h-[96px] w-full rounded-2xl border-2 border-[#eee] px-5 py-4 text-base" placeholder="Localizacao, preferencias..." />
-                <button type="submit" className="mt-6 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-full bg-[#ff8c00] text-[12.8px] font-bold uppercase tracking-[2.56px] text-white shadow-[0_10px_20px_-5px_#ff8c00]">
+                <textarea className="mt-4 min-h-[96px] w-full rounded-2xl border-2 border-[#eee] px-5 py-4 text-base" placeholder="Localizacao, preferencias..." />
+                <button className="mt-6 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-full bg-[#ff8c00] text-[12.8px] font-bold uppercase tracking-[2.56px] text-white shadow-[0_10px_20px_-5px_#ff8c00]">
                   <SendIcon className="h-4 w-4" />
                   Solicitar orçamento
                 </button>
