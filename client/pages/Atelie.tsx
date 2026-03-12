@@ -629,26 +629,58 @@ export default function Atelie() {
               <p className="text-base font-semibold text-[#967BB6]">{c.quote_banner ?? "Pedidos com antecedencia minima de 15 dias"}</p>
             </div>
 
-            <form className="absolute left-[752px] top-24 h-[707px] w-[636px] overflow-hidden rounded-[32px] border-2 border-[#967BB6] bg-white shadow-[0_30px_60px_-12px_rgba(150,123,182,0.40)]">
+            <form
+              className="absolute left-[752px] top-24 h-[707px] w-[636px] overflow-hidden rounded-[32px] border-2 border-[#967BB6] bg-white shadow-[0_30px_60px_-12px_rgba(150,123,182,0.40)]"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const formData = new FormData(form);
+                const data = {
+                  name: formData.get("name"),
+                  phone: formData.get("phone"),
+                  eventType: formData.get("eventType"),
+                  guests: formData.get("guests"),
+                  date: formData.get("date"),
+                  time: formData.get("time"),
+                  details: formData.get("details"),
+                };
+                try {
+                  const res = await fetch("/api/contact-quote", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                  });
+                  if (res.ok) {
+                    alert("Pedido enviado com sucesso!");
+                    form.reset();
+                  } else {
+                    alert("Erro ao enviar pedido. Tente novamente.");
+                  }
+                } catch {
+                  alert("Erro de rede. Tente novamente.");
+                }
+              }}
+            >
               <div className="absolute -left-[314px] -top-[349px] h-[1406px] w-[1264px] bg-[radial-gradient(67.24%_74.78%_at_50%_50%,rgba(150,123,182,0.10)_0%,rgba(150,123,182,0.00)_70%)]" />
               <h3 className="absolute left-[50px] top-[50px] font-playfair text-[32px] font-extrabold leading-[48px] tracking-[-0.02em] text-[#4D3522]">Solicitar orcamento</h3>
 
               <div className="absolute left-[50px] top-[130px] grid w-[536px] grid-cols-2 gap-4">
-                <input className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="Seu nome completo" />
-                <input className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="+244 900 000 000" />
-                <select aria-label="Tipo de Evento" title="Tipo de Evento" className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base">
+                <input name="name" className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="Seu nome completo" required />
+                <input name="phone" className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="+244 900 000 000" required />
+                <select name="eventType" aria-label="Tipo de Evento" title="Tipo de Evento" className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" required>
                   <option>Casamento</option>
                   <option>Aniversario</option>
                   <option>Evento corporativo</option>
                 </select>
-                <select aria-label="Numero de convidados" title="Numero de convidados" className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base">
+                <select name="guests" aria-label="Numero de convidados" title="Numero de convidados" className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" required>
                   <option>50-100</option>
                   <option>100-200</option>
                   <option>200-300</option>
                 </select>
-                <input className="col-span-2 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="mm/dd/yyyy" />
-                <textarea className="col-span-2 min-h-[116px] rounded-2xl border-2 border-[#EEE] px-5 py-4 text-base" placeholder="Cores, estilo, sabores preferidos, inspiracoes..." />
-                <button className="col-span-2 inline-flex h-[53px] items-center justify-center gap-2 rounded-[60px] bg-[#967BB6] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#967BB6]">
+                <input name="date" type="date" className="col-span-1 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" required />
+                <input name="time" type="time" className="col-span-1 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" required />
+                <textarea name="details" className="col-span-2 min-h-[116px] rounded-2xl border-2 border-[#EEE] px-5 py-4 text-base" placeholder="Cores, estilo, sabores preferidos, inspiracoes..." />
+                <button type="submit" className="col-span-2 inline-flex h-[53px] items-center justify-center gap-2 rounded-[60px] bg-[#967BB6] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#967BB6]">
                   <PaperPlaneIcon className="h-4 w-4" />
                   Solicitar orcamento
                 </button>
