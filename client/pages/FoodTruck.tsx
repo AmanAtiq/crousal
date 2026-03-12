@@ -479,58 +479,9 @@ export default function FoodTruck() {
             </div>
 
             <form className="absolute left-[752px] top-24 h-[688px] w-[636px] rounded-[32px] border-2 border-[#FF8C00] bg-white shadow-[0_30px_60px_-12px_rgba(255,140,0,0.35)]">
-              <h3 className="absolute left-[50px] top-[50px] font-playfair text-[32px] font-bold leading-[48px] tracking-[-0.02em] text-[#4D3522]">Pedir orçamento</h3>
+              <h3 className="absolute left-[50px] top-[50px] font-playfair text-[32px] font-bold leading-[48px] tracking-[-0.02em] text-[#4D3522]">Pedir or e7amento</h3>
 
-              <div className="absolute left-[50px] top-[130px] grid w-[536px] grid-cols-2 gap-x-4 gap-y-3">
-                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Nome *
-                  <input className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" placeholder="Seu nome completo" />
-                </label>
-
-                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">WhatsApp *
-                  <input className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" placeholder="+244 900 000 000" />
-                </label>
-
-                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Tipo de Evento
-                  <select aria-label="Tipo de Evento" title="Tipo de Evento" className="mt-2 h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[25px] text-base text-[#4D3522]">
-                    <option>Casamento</option>
-                    <option>Corporativo</option>
-                    <option>Aniversario</option>
-                    <option>Festival</option>
-                  </select>
-                </label>
-
-                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Nº Convidados
-                  <select aria-label="Numero de convidados" title="Numero de convidados" className="mt-2 h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[25px] text-base text-[#4D3522]">
-                    <option>50-100</option>
-                    <option>100-200</option>
-                    <option>200-350</option>
-                    <option>350-500</option>
-                  </select>
-                </label>
-
-                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Data
-                  <div className="relative mt-2">
-                    <input className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522]" placeholder="mm/dd/yyyy" />
-                    <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
-                  </div>
-                </label>
-
-                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Horario
-                  <div className="relative mt-2">
-                    <input className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522]" placeholder="--:--" />
-                    <Clock3Icon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
-                  </div>
-                </label>
-
-                <label className="col-span-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Mensagem adicional
-                  <textarea className="mt-2 h-24 w-full resize-none rounded-2xl border-2 border-[#EEE] px-[21px] py-[18px] text-base text-[#4D3522]" placeholder="Localizacao, preferencias..." />
-                </label>
-
-                <button className="col-span-2 mt-1 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-[60px] bg-[#FF8C00] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#FF8C00]">
-                  <SendIcon className="h-4 w-4" />
-                  Solicitar orçamento
-                </button>
-              </div>
+              <QuoteForm color="#FF8C00" />
             </form>
           </div>
 
@@ -554,30 +505,8 @@ export default function FoodTruck() {
               </div>
 
               <form className="rounded-[32px] border-2 border-[#ff8c00] bg-white p-8 shadow-[0_30px_60px_-12px_rgba(255,140,0,0.35)] md:p-12">
-                <h3 className="font-playfair text-5xl font-bold tracking-[-0.64px] text-[#4d3522]">Pedir orçamento</h3>
-                <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="Seu nome completo" />
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="+244 900 000 000" />
-                  <select aria-label="Tipo de evento" title="Tipo de evento" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
-                    <option>Casamento</option>
-                    <option>Corporativo</option>
-                    <option>Aniversario</option>
-                    <option>Festival</option>
-                  </select>
-                  <select aria-label="Numero de convidados" title="Numero de convidados" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
-                    <option>50-100</option>
-                    <option>100-200</option>
-                    <option>200-350</option>
-                    <option>350-500</option>
-                  </select>
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="dd/mm/yyyy" />
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="--:--" />
-                </div>
-                <textarea className="mt-4 min-h-[96px] w-full rounded-2xl border-2 border-[#eee] px-5 py-4 text-base" placeholder="Localizacao, preferencias..." />
-                <button className="mt-6 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-full bg-[#ff8c00] text-[12.8px] font-bold uppercase tracking-[2.56px] text-white shadow-[0_10px_20px_-5px_#ff8c00]">
-                  <SendIcon className="h-4 w-4" />
-                  Solicitar orçamento
-                </button>
+                <h3 className="font-playfair text-5xl font-bold tracking-[-0.64px] text-[#4d3522]">Pedir or e7amento</h3>
+                <QuoteForm color="#FF8C00" />
               </form>
             </div>
           </div>

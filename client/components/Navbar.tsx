@@ -61,9 +61,9 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link, i) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               className={`font-inter font-medium text-[11px] tracking-[2.24px] uppercase transition-colors ${
                 i === 0
                   ? "text-white relative after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[2px] after:bg-dlm-gold"
@@ -71,7 +71,7 @@ export default function Navbar() {
               }`}
             >
               {normalizeNavLabel(link.label)}
-            </a>
+            </Link>
           ))}
         </div>
 

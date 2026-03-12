@@ -633,26 +633,7 @@ export default function Atelie() {
               <div className="absolute -left-[314px] -top-[349px] h-[1406px] w-[1264px] bg-[radial-gradient(67.24%_74.78%_at_50%_50%,rgba(150,123,182,0.10)_0%,rgba(150,123,182,0.00)_70%)]" />
               <h3 className="absolute left-[50px] top-[50px] font-playfair text-[32px] font-extrabold leading-[48px] tracking-[-0.02em] text-[#4D3522]">Solicitar orcamento</h3>
 
-              <div className="absolute left-[50px] top-[130px] grid w-[536px] grid-cols-2 gap-4">
-                <input className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="Seu nome completo" />
-                <input className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="+244 900 000 000" />
-                <select aria-label="Tipo de Evento" title="Tipo de Evento" className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base">
-                  <option>Casamento</option>
-                  <option>Aniversario</option>
-                  <option>Evento corporativo</option>
-                </select>
-                <select aria-label="Numero de convidados" title="Numero de convidados" className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base">
-                  <option>50-100</option>
-                  <option>100-200</option>
-                  <option>200-300</option>
-                </select>
-                <input className="col-span-2 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base" placeholder="mm/dd/yyyy" />
-                <textarea className="col-span-2 min-h-[116px] rounded-2xl border-2 border-[#EEE] px-5 py-4 text-base" placeholder="Cores, estilo, sabores preferidos, inspiracoes..." />
-                <button className="col-span-2 inline-flex h-[53px] items-center justify-center gap-2 rounded-[60px] bg-[#967BB6] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#967BB6]">
-                  <PaperPlaneIcon className="h-4 w-4" />
-                  Solicitar orcamento
-                </button>
-              </div>
+              <QuoteForm />
             </form>
           </div>
 
@@ -677,18 +658,7 @@ export default function Atelie() {
 
               <form className="rounded-[32px] border-2 border-[#967BB6] bg-white p-6 shadow-[0_30px_60px_-12px_rgba(150,123,182,0.40)] lg:p-8">
                 <h3 className="font-playfair text-4xl font-extrabold text-[#4d3522]">Solicitar orcamento</h3>
-                <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
-                  <input className="h-14 rounded-2xl border-2 border-[#EEE] px-4 text-sm" placeholder="Seu nome completo" />
-                  <input className="h-14 rounded-2xl border-2 border-[#EEE] px-4 text-sm" placeholder="+244 900 000 000" />
-                  <select aria-label="Tipo de evento" title="Tipo de evento" className="h-14 rounded-2xl border-2 border-[#EEE] px-4 text-sm"><option>Casamento</option></select>
-                  <select aria-label="Numero de convidados" title="Numero de convidados" className="h-14 rounded-2xl border-2 border-[#EEE] px-4 text-sm"><option>50-100</option></select>
-                  <input className="md:col-span-2 h-14 rounded-2xl border-2 border-[#EEE] px-4 text-sm" placeholder="mm/dd/yyyy" />
-                  <textarea className="md:col-span-2 min-h-[116px] rounded-2xl border-2 border-[#EEE] px-4 py-3 text-sm" placeholder="Cores, estilo, sabores preferidos, inspiracoes..." />
-                </div>
-                <button className="mt-4 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-[60px] bg-[#967BB6] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#967BB6]">
-                  <PaperPlaneIcon className="h-4 w-4" />
-                  Solicitar orcamento
-                </button>
+                <QuoteForm />
               </form>
             </div>
           </div>
