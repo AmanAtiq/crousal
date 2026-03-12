@@ -910,7 +910,7 @@ function ImageDropZone({
       form.append("key", contentKey);
 
       try {
-        const response = await fetch("/api/admin/upload", {
+        const response = await fetch("https://crousal-production.up.railway.app/api/admin/upload", {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
           body: form,
@@ -989,7 +989,7 @@ function LoginScreen({ onLogin }: { onLogin: (token: string) => void }) {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/admin/login", {
+      const response = await fetch("https://crousal-production.up.railway.app/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),
@@ -1148,7 +1148,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
   const { toast } = useToast();
 
   useEffect(() => {
-    fetch("/api/content")
+    fetch("https://crousal-production.up.railway.app/api/content")
       .then((response) => response.json())
       .then((data: AllContent) => setAllContent(data))
       .catch(() => toast({ title: "Failed to load content", variant: "destructive" }));
@@ -1171,7 +1171,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
         }
       }
 
-      const response = await fetch("/api/admin/content", {
+      const response = await fetch("https://crousal-production.up.railway.app/api/admin/content", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
