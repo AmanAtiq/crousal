@@ -30,4 +30,3 @@ dist-ssr
 data/
 public/uploads/
 .vercel
-.env
