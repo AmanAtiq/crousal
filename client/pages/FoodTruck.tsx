@@ -598,8 +598,8 @@ const details = (form.elements[6] as HTMLTextAreaElement | HTMLInputElement).val
               <form className="rounded-[32px] border-2 border-[#ff8c00] bg-white p-8 shadow-[0_30px_60px_-12px_rgba(255,140,0,0.35)] md:p-12">
                 <h3 className="font-playfair text-5xl font-bold tracking-[-0.64px] text-[#4d3522]">Pedir orçamento</h3>
                 <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="Seu nome completo" />
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="+244 900 000 000" />
+                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="Seu nome completo" />
+                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="+244 900 000 000" />
                   <select aria-label="Tipo de evento" title="Tipo de evento" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
                     <option>Casamento</option>
                     <option>Corporativo</option>
@@ -612,10 +612,10 @@ const details = (form.elements[6] as HTMLTextAreaElement | HTMLInputElement).val
                     <option>200-350</option>
                     <option>350-500</option>
                   </select>
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="dd/mm/yyyy" />
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="--:--" />
+                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="dd/mm/yyyy" />
+                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="--:--" />
                 </div>
-                <textarea className="mt-4 min-h-[96px] w-full rounded-2xl border-2 border-[#eee] px-5 py-4 text-base" placeholder="Localizacao, preferencias..." />
+                <textarea className="mt-4 min-h-[96px] w-full rounded-2xl border-2 border-[#eee] px-5 py-4 text-base placeholder:font-sans placeholder:text-[#757575] placeholder:text-[16px] placeholder:font-normal" placeholder="Localizacao, preferencias..." />
                 <button className="mt-6 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-full bg-[#ff8c00] text-[12.8px] font-bold uppercase tracking-[2.56px] text-white shadow-[0_10px_20px_-5px_#ff8c00]">
                   <SendIcon className="h-4 w-4" />
                   Solicitar orçamento
