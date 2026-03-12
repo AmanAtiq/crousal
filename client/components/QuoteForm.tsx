@@ -53,67 +53,81 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ color = "#967BB6" }) => {
 
   return (
     <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
-      <input
-        name="name"
-        value={form.name}
-        onChange={handleChange}
-        className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base col-span-2"
-        placeholder="Seu nome completo"
-        required
-      />
-      <input
-        name="phone"
-        value={form.phone}
-        onChange={handleChange}
-        className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base col-span-2"
-        placeholder="+244 900 000 000"
-        required
-      />
-      <select
-        name="eventType"
-        value={form.eventType}
-        onChange={handleChange}
-        className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base"
-      >
-        <option>Casamento</option>
-        <option>Aniversario</option>
-        <option>Evento corporativo</option>
-        <option>Festival</option>
-      </select>
-      <select
-        name="guests"
-        value={form.guests}
-        onChange={handleChange}
-        className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base"
-      >
-        <option>50-100</option>
-        <option>100-200</option>
-        <option>200-300</option>
-        <option>350-500</option>
-      </select>
-      <input
-        name="date"
-        value={form.date}
-        onChange={handleChange}
-        className="col-span-1 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base"
-        type="date"
-        required
-      />
-      <input
-        name="time"
-        value={form.time}
-        onChange={handleChange}
-        className="col-span-1 h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base"
-        type="time"
-        required
-      />
-      <textarea
-        name="message"
-        value={form.message}
-        onChange={handleChange}
-        className="col-span-2 min-h-[116px] rounded-2xl border-2 border-[#EEE] px-5 py-4 text-base"
-        placeholder="Cores, estilo, sabores preferidos, inspiracoes..."
-      />
+      <label className="col-span-2 text-sm font-semibold text-[#4D3522]">Nome
+        <input
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base w-full mt-1"
+          placeholder="Seu nome completo"
+          required
+        />
+      </label>
+      <label className="col-span-2 text-sm font-semibold text-[#4D3522]">Telefone
+        <input
+          name="phone"
+          value={form.phone}
+          onChange={handleChange}
+          className="h-14 rounded-2xl border-2 border-[#EEE] px-5 text-base w-full mt-1"
+          placeholder="+244 900 000 000"
+          required
+        />
+      </label>
+      <label className="text-sm font-semibold text-[#4D3522]">Tipo de Evento
+        <select
+          name="eventType"
+          value={form.eventType}
+          onChange={handleChange}
+          className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base w-full mt-1"
+        >
+          <option>Casamento</option>
+          <option>Aniversario</option>
+          <option>Evento corporativo</option>
+          <option>Festival</option>
+        </select>
+      </label>
+      <label className="text-sm font-semibold text-[#4D3522]">Nº Convidados
+        <select
+          name="guests"
+          value={form.guests}
+          onChange={handleChange}
+          className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base w-full mt-1"
+        >
+          <option>50-100</option>
+          <option>100-200</option>
+          <option>200-300</option>
+          <option>350-500</option>
+        </select>
+      </label>
+      <label className="text-sm font-semibold text-[#4D3522]">Data
+        <input
+          name="date"
+          value={form.date}
+          onChange={handleChange}
+          className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base w-full mt-1"
+          type="date"
+          required
+        />
+      </label>
+      <label className="text-sm font-semibold text-[#4D3522]">Horário
+        <input
+          name="time"
+          value={form.time}
+          onChange={handleChange}
+          className="h-[58px] rounded-2xl border-2 border-[#EEE] px-5 text-base w-full mt-1"
+          type="time"
+          required
+        />
+      </label>
+      <label className="col-span-2 text-sm font-semibold text-[#4D3522]">Mensagem adicional
+        <textarea
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          className="min-h-[116px] rounded-2xl border-2 border-[#EEE] px-5 py-4 text-base w-full mt-1"
+          placeholder="Cores, estilo, sabores preferidos, inspiracoes..."
+        />
+      </label>
       <button
         type="submit"
         disabled={loading}
