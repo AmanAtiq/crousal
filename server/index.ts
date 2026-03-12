@@ -13,6 +13,7 @@ import {
 import { requireAuth } from "./middleware/auth";
 // Add this:
 import { handleAtelieQuote } from "./routes/atelie-quote";
+import { handleFoodTruckQuote } from "./routes/foodtruck-quote";
 export function createServer() {
   const app = express();
 
@@ -30,8 +31,10 @@ export function createServer() {
   app.get("/api/demo", handleDemo);
   app.post("/api/contact-quote", handleContactQuote);
   // Atelie form endpoint
- 
   app.post("/api/atelie-quote", handleAtelieQuote);
+  // Food Truck form endpoint
+
+  app.post("/api/foodtruck-quote", handleFoodTruckQuote);
 
   // Content (public read)
   app.get("/api/content", handleGetAllContent);
