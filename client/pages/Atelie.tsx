@@ -645,7 +645,7 @@ export default function Atelie() {
                   details: formData.get("details"),
                 };
                 try {
-                  const res = await fetch("/api/contact-quote", {
+                  const res = await fetch("/api/atelie-quote", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data),
