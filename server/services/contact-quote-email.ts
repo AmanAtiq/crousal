@@ -126,6 +126,10 @@ function formatQuoteHtml(payload: QuoteEmailPayload) {
   `;
 }
 
+
+export async function sendContactQuoteEmail(
+  payload: QuoteEmailPayload
+): Promise<QuoteEmailResult> {
   const brevoConfig = getBrevoConfig();
   if (!brevoConfig) {
     return {
@@ -148,7 +152,10 @@ function formatQuoteHtml(payload: QuoteEmailPayload) {
   const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
   const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
-  sendSmtpEmail.sender = { name: brevoConfig.from.replace(/<.*?>/, '').trim(), email: brevoConfig.from.match(/<(.+?)>/)?.[1] || brevoConfig.from };
+  sendSmtpEmail.sender = {
+    name: brevoConfig.from.replace(/<.*?>/, '').trim(),
+    email: brevoConfig.from.match(/<(.+?)>/)?.[1] || brevoConfig.from,
+  };
   sendSmtpEmail.to = recipients.map((email) => ({ email }));
   sendSmtpEmail.replyTo = { email: payload.email };
   sendSmtpEmail.subject = `[Smart Quote] ${payload.requestId} • ${payload.brand} • ${payload.eventType}`;
@@ -164,7 +171,7 @@ function formatQuoteHtml(payload: QuoteEmailPayload) {
   } catch (error: any) {
     return {
       delivered: false,
-      message: `Erro ao enviar email: ${error.message || error}`,
+      message: `Erro ao enviar email: ${error?.message || String(error)}`,
     };
   }
 }
