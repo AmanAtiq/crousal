@@ -32,3 +32,4 @@ public/uploads/
 .vercel
 .env
 .env.example
+.env
