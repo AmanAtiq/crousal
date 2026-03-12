@@ -28,6 +28,9 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
   app.post("/api/contact-quote", handleContactQuote);
+  // Atelie form endpoint
+  const { handleAtelieQuote } = require("./routes/atelie-quote");
+  app.post("/api/atelie-quote", handleAtelieQuote);
 
   // Content (public read)
   app.get("/api/content", handleGetAllContent);

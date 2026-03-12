@@ -775,38 +775,43 @@ export default function Atelie() {
                   return (
                     <li key={`${item.type}-${item.text}`} className="flex items-center gap-3">
                       {Icon ? <Icon className="h-4 w-4 text-[#967BB6]" /> : <span className="text-[#967BB6]">•</span>}
-                      {item.text}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            <div className="absolute bottom-0 left-0 h-[52px] w-full border-t border-[#967BB6]/20">
-              <p className="absolute left-0 top-[35px] text-[13px] font-light text-[#967BB6]/50">{c.footer_copyright ?? "© 2026 Atelie de Doces - Uma marca do grupo DLM"}</p>
-                <p className="absolute right-0 top-[35px] flex items-center gap-2 text-[13px] font-light text-[#967BB6]/50">
-                  <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 opacity-50"><path d="M13.2 11.2002C13.4 11.2002 13.6 11.4002 13.6 11.6002V12.4002C13.6 12.6252 13.4 12.8002 13.2 12.8002H2.8C2.575 12.8002 2.4 12.6252 2.4 12.4002V11.6002C2.4 11.4002 2.575 11.2002 2.8 11.2002H13.2ZM14.8 3.2002C15.45 3.2002 16 3.7502 16 4.4002C16 5.0752 15.45 5.6002 14.8 5.6002C14.725 5.6002 14.65 5.6002 14.6 5.6002L12.8 10.4002H3.2L1.375 5.6002C1.325 5.6002 1.25 5.6002 1.2 5.6002C0.525 5.6002 0 5.0752 0 4.4002C0 3.7502 0.525 3.2002 1.2 3.2002C1.85 3.2002 2.4 3.7502 2.4 4.4002C2.4 4.6002 2.35 4.7502 2.275 4.9002L4.1 6.0002C4.475 6.2252 4.975 6.1002 5.2 5.7002L7.225 2.1252C6.975 1.9252 6.8 1.5752 6.8 1.2002C6.8 0.550195 7.325 0.000195146 8 0.000195146C8.65 0.000195146 9.2 0.550195 9.2 1.2002C9.2 1.5752 9.025 1.9252 8.75 2.1252L10.775 5.7002C11 6.1002 11.5 6.2252 11.9 6.0002L13.7 4.9002C13.625 4.7502 13.6 4.6002 13.6 4.4002C13.6 3.7502 14.125 3.2002 14.8 3.2002Z" fill="#967BB6"/></svg>
-                  Luxury · Artistic · Premium
-                </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mx-auto w-full max-w-[1440px] px-5 xl:hidden">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-            <div>
-              <p className="font-playfair text-3xl font-bold text-white">ATELIE</p>
-              <p className="mt-3 text-sm leading-7">{c.footer_description ?? "Alta confeitaria artistica para momentos inesqueciveis. Bolos de autor que transformam celebracoes em obras de arte."}</p>
-            </div>
-            <div>
-              <p className="font-cormorant text-[19px] font-semibold uppercase tracking-[0.2em] text-[#967BB6]">Contacto</p>
-              <ul className="mt-4 space-y-3 text-sm">
-                {(footerContact.length > 0 ? footerContact : footerContactDefaults).map((item) => {
-                  const Icon = footerContactMap[item.type as keyof typeof footerContactMap];
-                  return (
-                    <li key={`${item.type}-${item.text}`} className="flex items-center gap-2">
-                      {Icon ? <Icon className="h-4 w-4 text-[#967BB6]" /> : <span className="text-[#967BB6]">•</span>}
-                      {item.text}
+                      <form
+                        className="absolute left-[752px] top-24 h-[707px] w-[636px] overflow-hidden rounded-[32px] border-2 border-[#967BB6] bg-white shadow-[0_30px_60px_-12px_rgba(150,123,182,0.40)]"
+                        onSubmit={async (e) => {
+                          e.preventDefault();
+                          const form = e.currentTarget;
+                          const formData = new FormData(form);
+                          const data = {
+                            name: formData.get("name"),
+                            phone: formData.get("phone"),
+                            eventType: formData.get("eventType"),
+                            guests: formData.get("guests"),
+                            date: formData.get("date"),
+                            time: formData.get("time"),
+                            details: formData.get("details"),
+                          };
+                          // Simple validation
+                          if (!data.name || !data.phone || !data.eventType || !data.guests || !data.date || !data.time) {
+                            alert("Por favor, preencha todos os campos obrigatórios.");
+                            return;
+                          }
+                          try {
+                            const res = await fetch("/api/atelie-quote", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify(data),
+                            });
+                            if (res.ok) {
+                              alert("Pedido enviado com sucesso!");
+                              form.reset();
+                            } else {
+                              alert("Erro ao enviar pedido. Tente novamente.");
+                            }
+                          } catch {
+                            alert("Erro de rede. Tente novamente.");
+                          }
+                        }}
+                      >
                     </li>
                   );
                 })}
