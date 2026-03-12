@@ -478,20 +478,49 @@ export default function FoodTruck() {
               <p className="ml-3 text-base font-semibold leading-6">{c.reservation_banner ?? "Próximas datas disponíveis: 5, 6, 12, 13 Abril"}</p>
             </div>
 
-            <form className="absolute left-[752px] top-24 h-[688px] w-[636px] rounded-[32px] border-2 border-[#FF8C00] bg-white shadow-[0_30px_60px_-12px_rgba(255,140,0,0.35)]">
+            <form
+              className="absolute left-[752px] top-24 h-[688px] w-[636px] rounded-[32px] border-2 border-[#FF8C00] bg-white shadow-[0_30px_60px_-12px_rgba(255,140,0,0.35)]"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const name = form.elements[0].value;
+                const phone = form.elements[1].value;
+                const eventType = form.elements[2].value;
+                const guests = form.elements[3].value;
+                const date = form.elements[4].value;
+                const time = form.elements[5].value;
+                const details = form.elements[6].value;
+                try {
+                  const res = await fetch("/api/foodtruck-quote", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, phone, eventType, guests, date, time, details }),
+                  });
+                  const data = await res.json();
+                  if (res.ok) {
+                    alert(data.message || "Pedido enviado com sucesso!");
+                    form.reset();
+                  } else {
+                    alert(data.message || "Erro ao enviar pedido. Tente novamente.");
+                  }
+                } catch (err) {
+                  alert("Erro ao enviar pedido. Tente novamente.");
+                }
+              }}
+            >
               <h3 className="absolute left-[50px] top-[50px] font-playfair text-[32px] font-bold leading-[48px] tracking-[-0.02em] text-[#4D3522]">Pedir orçamento</h3>
 
               <div className="absolute left-[50px] top-[130px] grid w-[536px] grid-cols-2 gap-x-4 gap-y-3">
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Nome *
-                  <input className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" placeholder="Seu nome completo" />
+                  <input name="name" className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" placeholder="Seu nome completo" required />
                 </label>
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">WhatsApp *
-                  <input className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" placeholder="+244 900 000 000" />
+                  <input name="phone" className="mt-2 h-14 w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" placeholder="+244 900 000 000" required />
                 </label>
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Tipo de Evento
-                  <select aria-label="Tipo de Evento" title="Tipo de Evento" className="mt-2 h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[25px] text-base text-[#4D3522]">
+                  <select name="eventType" aria-label="Tipo de Evento" title="Tipo de Evento" className="mt-2 h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[25px] text-base text-[#4D3522]">
                     <option>Casamento</option>
                     <option>Corporativo</option>
                     <option>Aniversario</option>
@@ -500,7 +529,7 @@ export default function FoodTruck() {
                 </label>
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Nº Convidados
-                  <select aria-label="Numero de convidados" title="Numero de convidados" className="mt-2 h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[25px] text-base text-[#4D3522]">
+                  <select name="guests" aria-label="Numero de convidados" title="Numero de convidados" className="mt-2 h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[25px] text-base text-[#4D3522]">
                     <option>50-100</option>
                     <option>100-200</option>
                     <option>200-350</option>
@@ -510,23 +539,23 @@ export default function FoodTruck() {
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Data
                   <div className="relative mt-2">
-                    <input className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522]" placeholder="mm/dd/yyyy" />
+                    <input name="date" type="date" className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522]" required />
                     <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
                   </div>
                 </label>
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Horario
                   <div className="relative mt-2">
-                    <input className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522]" placeholder="--:--" />
+                    <input name="time" type="time" className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522]" required />
                     <Clock3Icon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
                   </div>
                 </label>
 
                 <label className="col-span-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Mensagem adicional
-                  <textarea className="mt-2 h-24 w-full resize-none rounded-2xl border-2 border-[#EEE] px-[21px] py-[18px] text-base text-[#4D3522]" placeholder="Localizacao, preferencias..." />
+                  <textarea name="details" className="mt-2 h-24 w-full resize-none rounded-2xl border-2 border-[#EEE] px-[21px] py-[18px] text-base text-[#4D3522]" placeholder="Localizacao, preferencias..." />
                 </label>
 
-                <button className="col-span-2 mt-1 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-[60px] bg-[#FF8C00] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#FF8C00]">
+                <button type="submit" className="col-span-2 mt-1 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-[60px] bg-[#FF8C00] text-[13px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_-5px_#FF8C00]">
                   <SendIcon className="h-4 w-4" />
                   Solicitar orçamento
                 </button>
