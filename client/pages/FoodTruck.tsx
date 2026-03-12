@@ -539,14 +539,16 @@ export default function FoodTruck() {
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Data
                   <div className="relative mt-2">
-                    <input name="date" type="date" className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522]" required />
+                    <input name="date" type="date" className="h-[58px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" required />
+                    {/* Only one calendar icon, positioned right */}
                     <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
                   </div>
                 </label>
 
                 <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FF8C00]">Horario
                   <div className="relative mt-2">
-                    <input name="time" type="time" className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] pr-11 text-base text-[#4D3522]" required />
+                    <input name="time" type="time" className="h-[59px] w-full rounded-2xl border-2 border-[#EEE] px-[21px] text-base text-[#4D3522]" required />
+                    {/* Only one time icon, positioned right */}
                     <Clock3Icon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-black" />
                   </div>
                 </label>
@@ -585,25 +587,25 @@ export default function FoodTruck() {
               <form className="rounded-[32px] border-2 border-[#ff8c00] bg-white p-8 shadow-[0_30px_60px_-12px_rgba(255,140,0,0.35)] md:p-12">
                 <h3 className="font-playfair text-5xl font-bold tracking-[-0.64px] text-[#4d3522]">Pedir orçamento</h3>
                 <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="Seu nome completo" />
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="+244 900 000 000" />
-                  <select aria-label="Tipo de evento" title="Tipo de evento" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
+                  <input name="name" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="Seu nome completo" required />
+                  <input name="phone" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="+244 900 000 000" required />
+                  <select name="eventType" aria-label="Tipo de evento" title="Tipo de evento" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
                     <option>Casamento</option>
                     <option>Corporativo</option>
                     <option>Aniversario</option>
                     <option>Festival</option>
                   </select>
-                  <select aria-label="Numero de convidados" title="Numero de convidados" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
+                  <select name="guests" aria-label="Numero de convidados" title="Numero de convidados" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base">
                     <option>50-100</option>
                     <option>100-200</option>
                     <option>200-350</option>
                     <option>350-500</option>
                   </select>
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="dd/mm/yyyy" />
-                  <input className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" placeholder="--:--" />
+                  <input name="date" type="date" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" required />
+                  <input name="time" type="time" className="h-14 rounded-2xl border-2 border-[#eee] px-5 text-base" required />
                 </div>
-                <textarea className="mt-4 min-h-[96px] w-full rounded-2xl border-2 border-[#eee] px-5 py-4 text-base" placeholder="Localizacao, preferencias..." />
-                <button className="mt-6 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-full bg-[#ff8c00] text-[12.8px] font-bold uppercase tracking-[2.56px] text-white shadow-[0_10px_20px_-5px_#ff8c00]">
+                <textarea name="details" className="mt-4 min-h-[96px] w-full rounded-2xl border-2 border-[#eee] px-5 py-4 text-base" placeholder="Localizacao, preferencias..." />
+                <button type="submit" className="mt-6 inline-flex h-[53px] w-full items-center justify-center gap-2 rounded-full bg-[#ff8c00] text-[12.8px] font-bold uppercase tracking-[2.56px] text-white shadow-[0_10px_20px_-5px_#ff8c00]">
                   <SendIcon className="h-4 w-4" />
                   Solicitar orçamento
                 </button>
