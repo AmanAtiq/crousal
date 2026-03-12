@@ -218,7 +218,7 @@ export default function Contacto() {
           message: message.trim(),
         };
 
-        const response = await fetch("https://crousal-production.up.railway.app/api/contact-quote", {
+        const response = await fetch("/api/contact-quote", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
