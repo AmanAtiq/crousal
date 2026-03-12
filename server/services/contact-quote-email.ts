@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import SibApiV3Sdk from "sib-api-v3-sdk";
 import type { ContactQuoteRequest } from "@shared/api";
 
 type QuoteEmailPayload = ContactQuoteRequest & {
@@ -53,27 +53,11 @@ function getRecipients(brand: string) {
   );
 }
 
-function getTransportConfig() {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT ?? "0");
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+function getBrevoConfig() {
+  const apiKey = process.env.SMTP_PASS; // Use SMTP_PASS as Brevo API key
   const from = process.env.SMTP_FROM;
-
-  if (!host || !port || !user || !pass || !from) {
-    return null;
-  }
-
-  return {
-    host,
-    port,
-    secure: process.env.SMTP_SECURE === "true" || port === 465,
-    auth: {
-      user,
-      pass,
-    },
-    from,
-  };
+  if (!apiKey || !from) return null;
+  return { apiKey, from };
 }
 
 function formatQuoteText(payload: QuoteEmailPayload) {
@@ -142,13 +126,12 @@ function formatQuoteHtml(payload: QuoteEmailPayload) {
   `;
 }
 
-export async function sendContactQuoteEmail(payload: QuoteEmailPayload): Promise<QuoteEmailResult> {
-  const transportConfig = getTransportConfig();
-  if (!transportConfig) {
+  const brevoConfig = getBrevoConfig();
+  if (!brevoConfig) {
     return {
       delivered: false,
       message:
-        "SMTP is not configured. Set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS and SMTP_FROM to enable quote emails.",
+        "Brevo API is not configured. Set SMTP_PASS (Brevo API key) and SMTP_FROM to enable quote emails.",
     };
   }
 
@@ -161,24 +144,27 @@ export async function sendContactQuoteEmail(payload: QuoteEmailPayload): Promise
     };
   }
 
-  const transporter = nodemailer.createTransport({
-    host: transportConfig.host,
-    port: transportConfig.port,
-    secure: transportConfig.secure,
-    auth: transportConfig.auth,
-  });
+  SibApiV3Sdk.ApiClient.instance.authentications["api-key"].apiKey = brevoConfig.apiKey;
+  const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
-  await transporter.sendMail({
-    from: transportConfig.from,
-    to: recipients,
-    replyTo: payload.email,
-    subject: `[Smart Quote] ${payload.requestId} • ${payload.brand} • ${payload.eventType}`,
-    text: formatQuoteText(payload),
-    html: formatQuoteHtml(payload),
-  });
+  const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+  sendSmtpEmail.sender = { name: brevoConfig.from.replace(/<.*?>/, '').trim(), email: brevoConfig.from.match(/<(.+?)>/)?.[1] || brevoConfig.from };
+  sendSmtpEmail.to = recipients.map((email) => ({ email }));
+  sendSmtpEmail.replyTo = { email: payload.email };
+  sendSmtpEmail.subject = `[Smart Quote] ${payload.requestId} • ${payload.brand} • ${payload.eventType}`;
+  sendSmtpEmail.textContent = formatQuoteText(payload);
+  sendSmtpEmail.htmlContent = formatQuoteHtml(payload);
 
-  return {
-    delivered: true,
-    message: `Pedido recebido e enviado para ${recipients.join(", ")}`,
-  };
+  try {
+    await apiInstance.sendTransacEmail(sendSmtpEmail);
+    return {
+      delivered: true,
+      message: `Pedido recebido e enviado para ${recipients.join(", ")}`,
+    };
+  } catch (error: any) {
+    return {
+      delivered: false,
+      message: `Erro ao enviar email: ${error.message || error}`,
+    };
+  }
 }
