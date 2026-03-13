@@ -42,7 +42,7 @@ export const StoreLocationsSection = () => {
   const resolvedStores = stores.length > 0 ? stores : storesData;
 
   return (
-    <section className="w-full bg-white px-10 py-20">
+    <section className="w-full bg-white px-4 py-10 md:px-10 md:py-20">
       <div className="mx-auto max-w-[1360px]">
         <div className="mb-[94px] flex flex-col">
           <div className="mb-2.5 h-10 whitespace-nowrap text-[40px] leading-[60px] tracking-[-0.8px] text-[#b14e33]">{content.stores_title ?? "Nossas lojas"}</div>
@@ -88,10 +88,12 @@ export const StoreLocationsSection = () => {
 
         <Card className="overflow-hidden rounded-[30px] border-2 border-solid border-[#e97451] bg-[#f4e2d9] [background:radial-gradient(50%_50%_at_20%_30%,rgba(255,218,208,1)_2%,rgba(255,218,208,0)_2%),radial-gradient(50%_50%_at_80%_70%,rgba(255,200,184,1)_1%,rgba(255,200,184,0)_2%),linear-gradient(0deg,rgba(244,226,217,1)_0%,rgba(244,226,217,1)_100%)]">
           <CardContent className="p-0">
-            <div className="flex items-center justify-between gap-4 px-[42px] py-[43.5px]">
-              <InteractiveMapIcon />
-              <span className="flex-1 text-center text-2xl leading-9 text-[#7a4a38]">MAPA INTERATIVO - Patriota / Aeroporto (partidas e chegadas)</span>
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col items-center gap-4 px-4 py-6 md:flex-row md:justify-between md:px-[42px] md:py-[43.5px]">
+              <InteractiveMapIcon className="mb-2 md:mb-0" />
+              <span className="flex-1 text-center text-lg font-semibold leading-tight text-[#7a4a38] md:text-2xl md:leading-9">
+                MAPA INTERATIVO - Patriota / Aeroporto (partidas e chegadas)
+              </span>
+              <div className="flex items-center gap-4 mt-2 md:mt-0">
                 <span className="h-2 w-10 rounded-full bg-[#e97451]/25" />
                 <InteractivePinIcon />
               </div>
