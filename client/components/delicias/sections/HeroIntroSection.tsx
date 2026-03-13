@@ -12,40 +12,40 @@ export const HeroIntroSection = () => {
   const heroDescription = normalizeDeliciasDescription(c.hero_description);
 
   return (
-    <section className="relative w-full border-b-4 border-[#e97451] bg-[linear-gradient(127deg,rgba(252,233,224,1)_0%,rgba(255,217,204,1)_100%)] py-20">
-      <div className="pointer-events-none absolute right-[169px] top-[190px] flex h-[358px] w-[117px] rotate-[15deg] items-center text-[320px] leading-[480px] text-[#2a2a2a] opacity-10">
+    <section className="relative w-full border-b-4 border-[#e97451] bg-[linear-gradient(127deg,rgba(252,233,224,1)_0%,rgba(255,217,204,1)_100%)] py-10 md:py-20">
+      <div className="pointer-events-none absolute right-4 top-24 hidden md:flex h-[180px] w-[60px] rotate-[15deg] items-center text-[120px] leading-[180px] text-[#2a2a2a] opacity-10 md:right-[169px] md:top-[190px] md:h-[358px] md:w-[117px] md:text-[320px] md:leading-[480px]">
         🥐
       </div>
 
-      <div className="mx-auto max-w-[1360px] px-10">
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-[14.9px]">
-              <h1 className="font-inter whitespace-nowrap text-[61px] leading-[66.88px] tracking-[-0.02em] text-[#8f3e2b]">
+      <div className="mx-auto max-w-[1360px] px-4 md:px-10">
+        <div className="grid grid-cols-1 items-start gap-8 md:gap-12 lg:grid-cols-2">
+          <div className="flex flex-col gap-6 md:gap-8">
+            <div className="flex flex-col gap-3">
+              <h1 className="font-inter text-[32px] md:text-[61px] leading-[36px] md:leading-[66.88px] tracking-[-0.02em] text-[#8f3e2b]">
                 {heroHeading}
               </h1>
-              <h2 className="font-inter whitespace-nowrap text-[32px] font-bold leading-[35.2px] tracking-[0.1em] text-[#e97451]">
+              <h2 className="font-inter text-[18px] md:text-[32px] font-bold leading-[22px] md:leading-[35.2px] tracking-[0.1em] text-[#e97451]">
                 {heroSubheading}
               </h2>
             </div>
 
-            <p className="flex h-[33px] w-[351.47px] flex-col justify-center font-inter text-[26.8px] italic font-light leading-[43.2px] text-[#B1553A]">
+            <p className="flex flex-col justify-center font-inter text-[16px] md:text-[26.8px] italic font-light leading-[24px] md:leading-[43.2px] text-[#B1553A]">
               {heroQuote}
             </p>
 
             <RichTextContent
-              className="max-w-[589px] font-inter text-[19px] leading-[30.72px] text-[#5e3a2c]"
+              className="max-w-full md:max-w-[589px] font-inter text-[15px] md:text-[19px] leading-[22px] md:leading-[30.72px] text-[#5e3a2c]"
               content={heroDescription}
             />
 
-            <Button className="h-14 w-fit rounded-[60px] bg-[#e97451] px-12 font-inter text-base font-bold tracking-[0.1em] text-white shadow-[0px_15px_25px_-10px_#e9745180] hover:bg-[#d66642]">
+            <Button className="h-12 md:h-14 w-fit rounded-[60px] bg-[#e97451] px-6 md:px-12 font-inter text-base font-bold tracking-[0.1em] text-white shadow-[0px_15px_25px_-10px_#e9745180] hover:bg-[#d66642]">
               {c.hero_cta ?? "VER MENU COMPLETO"}
               <ChevronRightIcon className="ml-2 h-4 w-4" />
             </Button>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <div className="h-[276px] w-full max-w-[530px] overflow-hidden rounded-[120px_20px_120px_20px] border-2 border-dashed border-[#e97451] bg-[#fff0e699]">
+          <div className="flex justify-center lg:justify-end mt-8 md:mt-0">
+            <div className="h-[180px] md:h-[276px] w-full max-w-[320px] md:max-w-[530px] overflow-hidden rounded-[60px_10px_60px_10px] md:rounded-[120px_20px_120px_20px] border-2 border-dashed border-[#e97451] bg-[#fff0e699]">
               <img src={heroVisual} alt="Delicias hero visual" className="h-full w-full object-cover" />
             </div>
           </div>

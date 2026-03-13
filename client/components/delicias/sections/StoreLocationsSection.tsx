@@ -137,14 +137,14 @@ function StoreBadgeIcon({ storeName }: { storeName: string }) {
   return <PatriotaIcon />;
 }
 
-const InteractiveMapIcon = () => (
-  <svg width="54" height="43" viewBox="0 0 54 43" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="shrink-0">
+const InteractiveMapIcon = ({ className }: { className?: string }) => (
+  <svg width="54" height="43" viewBox="0 0 54 43" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className={className ?? "shrink-0"}>
     <path opacity="0.8" d="M0 8.34375C0 7.125 0.75 6 1.875 5.53125L15 0.28125V36.2812L1.96875 42.1875C1.03125 42.6562 0 41.9062 0 40.7812V8.34375ZM18 36.2812V0.28125L36 6.28125V42.2812L18 36.2812ZM51.9375 0.46875C52.875 0 54 0.75 54 1.875V34.3125C54 35.5312 53.1562 36.6562 52.0312 37.125L39 42.2812V6.28125L51.9375 0.46875Z" fill="#E97451"/>
   </svg>
 );
 
-const InteractivePinIcon = () => (
-  <svg width="36" height="49" viewBox="0 0 36 49" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="shrink-0">
+const InteractivePinIcon = ({ className }: { className?: string }) => (
+  <svg width="36" height="49" viewBox="0 0 36 49" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className={className ?? "shrink-0"}>
     <path opacity="0.8" d="M16.125 47.0625C2.4375 27.375 0 25.3125 0 18C0 8.0625 7.96875 0 18 0C27.9375 0 36 8.0625 36 18C36 25.3125 33.4688 27.375 19.7812 47.0625C18.9375 48.375 16.9688 48.375 16.125 47.0625ZM18 25.5C22.125 25.5 25.5 22.2188 25.5 18C25.5 13.875 22.125 10.5 18 10.5C13.7812 10.5 10.5 13.875 10.5 18C10.5 22.2188 13.7812 25.5 18 25.5Z" fill="#E97451"/>
   </svg>
 );
