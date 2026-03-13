@@ -39,19 +39,19 @@ export const ProductGallerySection = () => {
   }));
 
   return (
-    <section className="relative w-full bg-[#fff9f5] py-8 md:py-[70px]">
-      <div className="mx-auto px-4 md:px-10">
-        <header className="mb-8 md:mb-[54px]">
-          <h2 className="mb-2.5 text-[24px] md:text-[40px] leading-[32px] md:leading-[60px] tracking-[-0.8px] text-[#b14e33]">{content.gallery_title ?? "Galeria de sabores"}</h2>
+    <section className="relative w-full bg-[#fff9f5] py-[70px]">
+      <div className="mx-auto px-10">
+        <header className="mb-[54px]">
+          <h2 className="mb-2.5 text-[40px] leading-[60px] tracking-[-0.8px] text-[#b14e33]">{content.gallery_title ?? "Galeria de sabores"}</h2>
           <div className="h-[3px] w-[70px] bg-[#e97451] opacity-40" />
         </header>
 
-        <div className="mb-8 md:mb-16 flex flex-wrap gap-2 md:gap-[6px]">
+        <div className="mb-16 flex flex-wrap gap-[6px]">
           {filters.map((label, index) => (
             <Button
               key={label}
               variant={index === 0 ? "default" : "outline"}
-              className={`h-auto rounded-[40px] px-4 md:px-6 py-2 text-xs md:text-sm font-bold ${
+              className={`h-auto rounded-[40px] px-6 py-2 text-sm font-bold ${
                 index === 0
                   ? "border-[#e97451] bg-[#e97451] text-white hover:bg-[#e97451]/90"
                   : "border-[#e97451] bg-transparent text-[#e97451] hover:bg-[#e97451]/10"
@@ -62,24 +62,24 @@ export const ProductGallerySection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:gap-[25px] md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid auto-rows-auto grid-cols-1 gap-[25px] md:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => {
             const isLargeCard = item.large ?? index === 1;
 
             return (
               <Card
                 key={`${item.title}-${index}`}
-                className={`overflow-hidden rounded-[18px] md:rounded-[24px] border-none bg-[#F5E3DB] shadow-[0_10px_20px_-5px_rgba(233,116,81,0.20)`}
+                className={`${isLargeCard ? "h-[903px] md:row-span-2" : "h-[493px]"} overflow-hidden rounded-[24px] border-none bg-[#F5E3DB] shadow-[0_10px_20px_-5px_rgba(233,116,81,0.20)]`}
               >
                 <CardContent className="flex h-full flex-col p-0">
                   <div className="flex-1">
                     <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
                   </div>
-                  <div className="flex h-[40px] md:h-[54px] items-center gap-2 md:gap-[5.6px] bg-white px-3 md:px-[15px]">
+                  <div className="flex h-[54px] items-center gap-[5.6px] bg-white px-[15px]">
                     <span className="shrink-0">
                       <TagLabelIcon />
                     </span>
-                    <span className="text-xs md:text-base leading-5 md:leading-6 text-[#5e3a2c]">
+                    <span className="text-base leading-6 text-[#5e3a2c]">
                       {item.title} • {item.category}
                     </span>
                   </div>

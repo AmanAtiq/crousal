@@ -39,8 +39,8 @@ export const FooterSection = () => {
 
   return (
     <footer className="w-full border-t-[6px] border-[#e97451] bg-[#b14e33]">
-      <div className="mx-auto max-w-[1360px] px-4 md:px-10 py-10 md:py-[66px]">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-20">
+      <div className="mx-auto max-w-[1360px] px-10 py-[66px]">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-20">
           <div className="flex flex-col gap-5">
             <h3 className="text-[19.2px] leading-[28.8px] text-[#ffd9c9]">DELICIAS DA MADALENA</h3>
             <RichTextContent className="text-base leading-6 text-[#fff0e0] opacity-90" content={content.footer_description ?? "Delicias da Madalena e uma marca do grupo DLM, com sabor tradicional e energia contemporanea para Luanda."} />
